@@ -1,0 +1,49 @@
+body
+{
+    background-color: lightgray;
+}
+.disclaimer
+{
+    text-align: center;
+    color: #505050;
+    font-size: 13px;
+}
+.backbutton
+{
+    margin-right: 98%;
+    background-color: rgb(126, 126, 126);
+    border-radius: 3px;
+    text-align: center;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.head
+{
+    text-align: center;
+}
+.head p
+{
+    color: #505050;
+    font-size: 13px;
+}
+.information
+{
+    padding-left: 32%;
+    padding-right: 32%;
+}
+.information li
+{
+    padding-top: 8px;
+}
+.footer
+{
+    text-align: center;
+}
+footer {
+    background-color: grey;
+    text-align: center;
+    padding: 10px;
+    font-size: 15px;
+    width: 99%;
+    margin-top: 1%;
+}
