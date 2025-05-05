@@ -108,11 +108,6 @@ body {
     background: #e6f2ff;
   }
   
-  footer {
-    text-align: center;
-    margin-top: 40px;
-  }
-  
   .btn {
     display: inline-block;
     background: #0077cc;
@@ -126,6 +121,15 @@ body {
   
   .btn:hover {
     background: #005fa3;
+  }
+  footer {
+    background-color: grey;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    width: 100%;
+    margin-top: 10%;
   }
   
   /* Animation for fade-in effect */
