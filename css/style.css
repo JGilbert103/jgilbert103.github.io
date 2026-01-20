@@ -1,0 +1,541 @@
+/*CSS Reset and General Styles*/
+:root {
+    --content-height: 0px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    line-height: 1.5;
+    background: #2e2e2e;
+    color: #0c3b23;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+input, label, textarea, button, select {
+    font: 'Cabin';
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-left: .1rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*Header Area Styles*/
+header {
+    background-color: #394053;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    padding: 0;
+}
+
+form {
+    padding-left: 2rem;
+    padding-top: 1rem;
+}
+
+header a {
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    font-family: 'Cabin', sans-serif;
+    text-align: right;
+    list-style-type: none;
+}
+
+nav a {
+    color: #5bb7f5;
+    border-bottom: 4px solid transparent;
+    display: grid;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    font-size: 1.5rem;
+}
+
+nav a:hover, nav a:active {
+    border-bottom: 4px solid #fff;
+}
+
+h2 {
+    font-family: 'Cabin Sketch', sans-serif;
+    color: #96d499;
+    font-size: 1.5rem;
+    text-align: center; 
+    margin: 0;
+    padding: .5rem;
+}
+
+/*Main Content Area Styles*/
+main {
+    background-color: #bbb09b;
+    width: 100%;
+    max-width: 1800px;
+    margin: auto;
+    flex-grow: 1;
+}
+
+main video {
+    display: flex;
+    justify-content: center;
+}
+
+main ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 1rem;
+    border-bottom: 4px solid #2e2e2e;
+}
+
+main ul h2 {
+    padding: 2rem;
+}
+
+main img {
+    display: block;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #d95763;
+}
+
+main p {
+    text-align: center;
+    padding-bottom: .5rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    font-size: x-large;
+}
+
+/*Footer Area Styles*/
+footer {
+    background-color: #2e2e2e;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.font-sm {
+    font-size: .8rem;
+}
+
+/*Home Page Styles*/
+main li {
+    list-style-type: none;
+    /* background-image: url(../images/logo.png); */
+    background-repeat: no-repeat;
+    background-size: 1em 1em;
+    padding-left: 1.5em;
+    background-position: 0 .2em;
+}
+
+main a {
+    color: #516cc7;
+}
+
+main a:hover, main a:active {
+    border-bottom: 2px solid #000000;
+}
+
+table tr {
+    display: grid;
+    align-items: left;
+    border: 4px solid black;
+    margin: 1rem;
+}
+
+table img {
+    width: 100%;
+}
+
+table {
+    width: auto;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: .25rem;
+    text-align: center;
+}
+
+/* Classes */
+.centeredHeading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #bbb09b;
+}
+
+.blackText {
+    color: #000000;
+}
+
+.spaceOut {
+    margin-left: 3rem;
+}
+
+.paddingBottom {
+    padding-bottom: 1rem;
+}
+
+.centerContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+.horizontalContent {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 2rem;
+}
+
+.downloadLink {
+    color: #5bb7f5;
+}
+
+.underline {
+    border-bottom: 4px solid #2e2e2e;
+}
+
+.border {
+    border-bottom: 4px solid #2e2e2e;
+    border-left: 4px solid #2e2e2e;
+    border-right: 4px solid #2e2e2e;
+}
+
+.border-side {
+    border-left: 4px solid #2e2e2e;
+    border-right: 4px solid #2e2e2e;
+}
+
+.border-top {
+    padding-top: 1rem;
+    border-top: 4px solid #2e2e2e;
+}
+
+.largerArea {
+    width: 60%;
+    height: 200px;
+    border: 1px solid #2e2e2e;
+    border-radius: 4px;
+}
+
+.formatBoxes {
+    width: 30%;
+    height: 40px;
+}
+
+.textAlignment {
+    flex-grow: 1;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.moveRight {
+    padding-left: 12rem;
+    margin-right: 4rem;
+}
+
+.spaceLeft {
+    margin-left: 2rem;
+}
+
+.spaceRight {
+    margin-right: 4rem;
+}
+
+.backgroundDarker {
+    background-color: #2e2e2e;
+}
+
+.paddingTop {
+    padding-top: 1rem;
+}
+
+.marginTop {
+    margin-top: 1rem;
+}
+
+.borderTopThicc {
+    border-top: 12px solid #2e2e2e;
+}
+
+.positionRight {
+    margin-left: 1rem;
+}
+
+.boxed {
+    border: 2px solid black;
+}
+
+.paddingRight {
+    padding-right: 2rem;
+}
+
+.flexContent {
+    display: flex;
+}
+
+/* Taken from Assignment4 (Credit goes to Professor Mohaimenur Rahman) */
+.carousel-container {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel {
+    list-style-type: none;
+    width: 100%;
+    height: 600px;
+    position: relative;
+}
+
+.carousel-item {
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+.carousel-item > img {
+    display: block;
+    width: 100%;
+    height: 85%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.monkeGif {
+    width: 100vw;
+    height: 100vh;
+    object-fit: fill; 
+}
+
+.carousel-item > video {
+    display: block;
+    width: 100%;
+    height: 85%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.carousel-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: black;
+    position: absolute;
+    top: 50%;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.carousel-btn.left {
+    left: -2.5rem;
+}
+
+.carousel-btn.right {
+    right: -2.5rem;
+}
+
+.carousel-btn:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+.carousel-nav {
+    margin-top: .25rem;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    opacity: 0.7;
+    border: none;
+}
+
+.carousel-nav:hover {
+    opacity: 1;
+    background: transparent;
+}
+
+.nav-item {
+    height: 11px;
+    width: 11px;
+    background-color: black;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+.nav-item.active {
+    opacity: 1;
+}
+
+/* End of code ripping from assignment4 */
+
+.modal-btn img {
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+    opacity: .9;
+}
+
+.modalContent {
+    background-color: white;
+    margin: auto;
+    padding: 1rem;
+    border: 1px solid black;
+    width: 50%;
+}
+
+.close {
+    color: #5c5c5c;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cart-item {
+    margin-bottom: 1rem; 
+    padding: 1rem; 
+    border: 1px solid #ccc; 
+    background-color: #f9f9f9; 
+    margin-right: 10rem;
+}
+
+.cart-item div {
+    margin-bottom: 0.5rem; 
+}
+
+.centerTheContent{
+    justify-content: center;
+}
+
+/* Accordion styling from lab4 */
+.accordion {
+    width: 80%;
+    margin: 1rem auto;
+    line-height: 1.5;
+}
+
+.accordion-label {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 1rem 0.5rem;
+    text-align: left;
+    background-color: #2e2e2e;
+    opacity: 0.7;
+    border: none;
+    color: #d95763;
+    position: relative;
+    transition: opacity 0.5s ease-out;
+}
+
+.accordion-content {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+    text-align: left;
+}
+
+.addBackground {
+    background: #2e2e2e;
+    opacity: .7;
+}
+
+.accordion-content.open {
+    height: var(--content-height);
+    overflow: auto;
+}
+
+.accordion-label.open {
+    opacity: 1;
+}
+
+.accordion-label::after {
+    content: '+';
+    position: absolute;
+    right: 1rem;
+    font-size: 1.2rem;
+}
+
+.accordion-label.open::after {
+    content: '-';
+    font-size: 1.5rem;
+}
+
+.quote-color {
+    color: white;
+}
+
+.overlay {
+    position: fixed; /* Fix to viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 10; /* Ensure it appears above other content */
+}
+
+.monkeGif {
+    display: none; /* Hide the GIF initially */
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    object-fit: fill; /* Adjust the image fit */
+    z-index: 5; /* Behind the overlay */
+}
