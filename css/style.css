@@ -314,17 +314,16 @@ th, td {
 
 .monkeGif {
     position: absolute;
-    top: 0;
-    left: 50%;
+    inset: 0;
     width: 100%;
     height: 100%;
-    transform: translateX(-50%);
-    object-fit: contain;
-    object-position: center center;
+    object-fit: cover; 
+    object-position: center;
     display: none;
     z-index: 1;
-    background-color: #666;
+    background-color: #1e1e1e;
 }
+
 
 
 
@@ -334,7 +333,7 @@ main.monkeStage {
     width: 100vw;
     margin: 0;
     max-width: none;
-    background-color: #666;
+    background-color: #1e1e1e;
     overflow: hidden;
 }
 
