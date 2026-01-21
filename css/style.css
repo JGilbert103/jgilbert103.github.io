@@ -321,7 +321,7 @@ th, td {
     object-position: center;
     display: none;
     z-index: 1;
-    background-color: #1e1e1e;
+    background-color: #2e2e2e;
 }
 
 
@@ -333,7 +333,7 @@ main.monkeStage {
     width: 100vw;
     margin: 0;
     max-width: none;
-    background-color: #1e1e1e;
+    background-color: #2e2e2e;
     overflow: hidden;
 }
 
