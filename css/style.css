@@ -517,25 +517,24 @@ th, td {
 }
 
 .overlay {
-    position: fixed; /* Fix to viewport */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: fixed;
+    inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.85);
     color: white;
-    font-size: 2em;
+    font-size: 2.5rem;
     cursor: pointer;
-    z-index: 10; /* Ensure it appears above other content */
+    z-index: 10;
 }
 
 .monkeGif {
-    display: none; /* Hide the GIF initially */
-    width: 100vw; /* Full width */
-    height: 100vh; /* Full height */
-    object-fit: fill; /* Adjust the image fit */
-    z-index: 5; /* Behind the overlay */
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: fill;
+    display: none;    
+    z-index: 1;         
 }

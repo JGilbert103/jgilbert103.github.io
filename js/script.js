@@ -1,44 +1,90 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Monke Overlay and Audio Logic
-    const overlay = document.getElementById('overlay');
-    const audio = document.getElementById('monkeAudio');
-    const monkeGif = document.querySelector('.monkeGif');
+document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById("overlay");
+    const audio = document.getElementById("monkeAudio");
+    const monkeGif = document.querySelector(".monkeGif");
+    const randomMonkeLink = document.getElementById("randomMonkeLink");
 
-    if (overlay && audio && monkeGif) {
-        overlay.addEventListener('click', () => {
-            audio.play();
-            overlay.style.display = 'none';
-            monkeGif.style.display = 'block';
+    let monkes = [];
+    let lastID = null;
+
+    fetch("data/monke.json")
+        .then(res => res.json())
+        .then(data => {
+            monkes = data.filter(m => m.gif && m.audio);
+            preloadMonkes(monkes);
+            loadFromURL();
+        })
+        .catch(err => console.error("Failed to load monkes:", err));
+
+
+    function playAudio(monke) {
+        audio.pause();
+        audio.src = monke.audio;
+        audio.load();
+
+        audio.addEventListener("loadedmetadata", () => {
+            audio.currentTime = monke.start || 0;
+            audio.play().catch(() => {});
+        }, { once: true });
+    }
+
+    function preloadMonkes(monkes) {
+        monkes.forEach(m => {
+            const img = new Image();
+            img.src = m.gif;
+
+            const a = new Audio();
+            a.src = m.audio;
         });
     }
 
-    // Random Page Link Logic
-    const randomMonkeLink = document.getElementById('randomMonkeLink');
-    
-    if (randomMonkeLink) {
-        randomMonkeLink.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent the default action of the link
+    function showMonke(monke) {
+        monkeGif.src = monke.gif;
+        monkeGif.style.display = "block";
+        overlay.style.display = "none";
 
-            // Set the number of available pages
-            const totalPages = 4; // Change this number if you add more pages
-            let randomPageNumber;
+        playAudio(monke);
 
-            // Retrieve the previously visited page from localStorage
-            const previousPage = localStorage.getItem('previousPage');
-
-            // Loop until a different page number is generated
-            do {
-                randomPageNumber = Math.floor(Math.random() * totalPages) + 1;
-            } while (`monke${randomPageNumber}.html` === previousPage);
-
-            // Construct the random page URL
-            const randomPage = `monke${randomPageNumber}.html`;
-
-            // Store this page in localStorage
-            localStorage.setItem('previousPage', randomPage);
-
-            // Redirect to the random page
-            window.location.href = randomPage;
-        });
+        lastID = monke.ID;
     }
+
+
+
+    function getRandomMonke() {
+        if (monkes.length === 1) return monkes[0];
+
+        let monke;
+        do {
+            monke = monkes[Math.floor(Math.random() * monkes.length)];
+        } while (monke.ID === lastID);
+
+        return monke;
+    }
+
+    function setURL(id) {
+        const url = new URL(window.location);
+        url.searchParams.set("id", id);
+        window.history.pushState({}, "", url);
+    }
+
+    function loadFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const id = parseInt(params.get("id"), 10);
+
+        if (Number.isNaN(id)) return;
+
+        const monke = monkes.find(m => m.ID === id);
+        if (monke) showMonke(monke);
+    }
+
+    function triggerMonke() {
+        if (!monkes.length) return;
+
+        const monke = getRandomMonke();
+        showMonke(monke);
+        setURL(monke.ID);
+    }
+
+    randomMonkeLink.addEventListener("click", triggerMonke);
+    overlay.addEventListener("click", triggerMonke);
 });
