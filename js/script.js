@@ -1,90 +1,62 @@
 document.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById("overlay");
+    const gif = document.querySelector(".monkeGif");
     const audio = document.getElementById("monkeAudio");
-    const monkeGif = document.querySelector(".monkeGif");
-    const randomMonkeLink = document.getElementById("randomMonkeLink");
+    const button = document.getElementById("randomMonkeLink");
 
     let monkes = [];
     let lastID = null;
 
     fetch("data/monke.json")
-        .then(res => res.json())
+        .then(r => r.json())
         .then(data => {
-            monkes = data.filter(m => m.gif && m.audio);
-            preloadMonkes(monkes);
-            loadFromURL();
-        })
-        .catch(err => console.error("Failed to load monkes:", err));
+            monkes = data;
+            preload(monkes);
+        });
 
+    function preload(data) {
+        data.forEach(m => {
+            new Image().src = m.gif;
+            new Audio(m.audio);
+        });
+    }
+
+    function getRandom() {
+        let m;
+        do {
+            m = monkes[Math.floor(Math.random() * monkes.length)];
+        } while (m.ID === lastID && monkes.length > 1);
+        return m;
+    }
 
     function playAudio(monke) {
         audio.pause();
         audio.src = monke.audio;
+        audio.muted = true;
         audio.load();
 
-        audio.addEventListener("loadedmetadata", () => {
-            audio.currentTime = monke.start || 0;
+        audio.addEventListener("canplay", () => {
+            if (monke.start && audio.duration > monke.start) {
+                audio.currentTime = monke.start;
+            }
+            audio.muted = false;
             audio.play().catch(() => {});
         }, { once: true });
     }
 
-    function preloadMonkes(monkes) {
-        monkes.forEach(m => {
-            const img = new Image();
-            img.src = m.gif;
-
-            const a = new Audio();
-            a.src = m.audio;
-        });
-    }
-
     function showMonke(monke) {
-        monkeGif.src = monke.gif;
-        monkeGif.style.display = "block";
+        gif.src = monke.gif;
+        gif.style.display = "block";
         overlay.style.display = "none";
-
         playAudio(monke);
-
         lastID = monke.ID;
     }
 
-
-
-    function getRandomMonke() {
-        if (monkes.length === 1) return monkes[0];
-
-        let monke;
-        do {
-            monke = monkes[Math.floor(Math.random() * monkes.length)];
-        } while (monke.ID === lastID);
-
-        return monke;
-    }
-
-    function setURL(id) {
-        const url = new URL(window.location);
-        url.searchParams.set("id", id);
-        window.history.pushState({}, "", url);
-    }
-
-    function loadFromURL() {
-        const params = new URLSearchParams(window.location.search);
-        const id = parseInt(params.get("id"), 10);
-
-        if (Number.isNaN(id)) return;
-
-        const monke = monkes.find(m => m.ID === id);
-        if (monke) showMonke(monke);
-    }
-
-    function triggerMonke() {
+    function trigger() {
         if (!monkes.length) return;
-
-        const monke = getRandomMonke();
-        showMonke(monke);
-        setURL(monke.ID);
+        showMonke(getRandom());
     }
 
-    randomMonkeLink.addEventListener("click", triggerMonke);
-    overlay.addEventListener("click", triggerMonke);
+    overlay.addEventListener("click", trigger);
+    button.addEventListener("click", trigger);
 });
