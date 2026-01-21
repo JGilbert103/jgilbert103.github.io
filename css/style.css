@@ -297,11 +297,8 @@ th, td {
     display: flex;
 }
 
-/* Accordion / Carousel / Modal code unchanged */
-
-/* FIXED OVERLAY */
 .overlay {
-    position: absolute; /* was fixed */
+    position: absolute;
     inset: 0;
     display: flex;
     justify-content: center;
@@ -313,13 +310,17 @@ th, td {
     z-index: 2;
 }
 
-/* FIXED MONKE GIF (single definition only) */
+
 .monkeGif {
-    position: fixed;
-    inset: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 100vw;
     height: 100vh;
+    transform: translate(-50%, -50%);
     object-fit: fill;
     display: none;
     z-index: 1;
 }
+
+
