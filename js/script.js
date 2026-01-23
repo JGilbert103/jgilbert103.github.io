@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let hasInteracted = false;
     let pendingMonke = null;
+    let isPaused = false;
+
 
     fetch("data/monke.json")
         .then(r => r.json())
@@ -84,8 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function playAudio(monke) {
         audio.pause();
         audio.src = monke.audio;
-        audio.muted = true;
         audio.loop = true;
+        audio.muted = true;
+        isPaused = false;
+
         audio.load();
 
         audio.addEventListener(
@@ -94,13 +98,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (monke.start && audio.duration > monke.start) {
                     audio.currentTime = monke.start;
                 }
+
                 audio.muted = false;
-                audio.play().catch(() => {});
-                pauseBtn.textContent = "⏸";
+
+                if (!isPaused) {
+                    audio.play().catch(() => {});
+                    pauseBtn.textContent = "⏸";
+                }
             },
             { once: true }
         );
     }
+
 
     function updateMonkeUI(monke) {
         monkeText.textContent = monke.text;
@@ -144,16 +153,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     pauseBtn.addEventListener("click", (e) => {
-        e.stopPropagation(); 
+        e.stopPropagation();
 
         if (audio.paused) {
+            isPaused = false;
             audio.play().catch(() => {});
             pauseBtn.textContent = "⏸";
         } else {
+            isPaused = true;
             audio.pause();
             pauseBtn.textContent = "▶";
         }
     });
+
 
     overlay.addEventListener("click", trigger);
     button.addEventListener("click", trigger);
