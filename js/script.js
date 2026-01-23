@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let monkes = [];
     let monkeBag = [];
-
-    /* ---------- Fetch + Init ---------- */
+    let lastMonke = null;
 
     fetch("data/monke.json")
         .then(r => r.json())
@@ -22,8 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 showMonke(fromURL);
             }
         });
-
-    /* ---------- Helpers ---------- */
 
     function preload(data) {
         data.forEach(m => {
@@ -42,13 +39,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function refillBag() {
         monkeBag = shuffle([...monkes]);
+
+        if (lastMonke && monkeBag[monkeBag.length - 1].ID === lastMonke.ID) {
+            monkeBag = shuffle([...monkes]);
+        }
     }
 
     function getNextMonke() {
         if (!monkeBag.length) {
             refillBag();
         }
-        return monkeBag.pop();
+
+        const monke = monkeBag.shift();
+
+        if (lastMonke && monke.ID === lastMonke.ID) {
+            monkeBag.push(monke);
+            return getNextMonke();
+        }
+
+        lastMonke = monke;
+        return monke;
     }
 
     function setURL(monke) {
@@ -63,12 +73,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return monkes.find(m => m.ID === id) || null;
     }
 
-    /* ---------- Playback ---------- */
-
     function playAudio(monke) {
         audio.pause();
         audio.src = monke.audio;
         audio.muted = true;
+        audio.loop = true;
         audio.load();
 
         audio.addEventListener(
@@ -91,8 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
         playAudio(monke);
         setURL(monke);
     }
-
-    /* ---------- Events ---------- */
 
     function trigger() {
         if (!monkes.length) return;
