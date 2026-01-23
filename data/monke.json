@@ -33,5 +33,12 @@
         "audio" : "audio/youanddatmonke.mp3",
         "start": 0,
         "text": "Monke in Bikini"
+    },
+    {
+        "ID": 6,
+        "gif": "gifs/monke6.gif",
+        "audio" : "audio/925.mp3",
+        "start": 0,
+        "text": "Monke be workin"
     }
 ]
