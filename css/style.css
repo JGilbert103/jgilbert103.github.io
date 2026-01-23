@@ -13,8 +13,8 @@ body {
 
 /* HEADER */
 header {
-  background: #3c4656;   /* dark blue bar */
-  height: 80px;
+  background: #3c4656; 
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,28 +25,41 @@ header {
 header h2 {
   color: #69c26b;
   font-family: 'Cabin Sketch', cursive;
-  font-size: 22px;
+  font-size: 30px;
 }
 
 /* monke image */
 header nav img {
-  height: 80px;
+  height: 100px;
   width: auto;
   object-fit: cover;
+}
+header nav img:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
 }
 
 /* MAIN */
 .monkeStage {
-  height: calc(100vh - 80px);
+  height: calc(100vh - 100px);
+  overflow: hidden;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #000;
 }
 
-/* normal font for "Click for Monke" */
+.monkeGif {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* "Click for Monke" */
 .overlay {
   color: #fff;
   font-size: 36px;
-  font-family: 'Cabin', sans-serif;  /* <-- normal font */
+  font-family: 'Cabin', sans-serif; 
 }
