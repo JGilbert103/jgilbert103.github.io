@@ -41,9 +41,12 @@ header nav img:hover {
 
 /* MAIN */
 .monkeStage {
-  height: 100vh;
+  height: calc(100vh - 100px);
   overflow: hidden;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .monkeGif {
