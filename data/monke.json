@@ -4,41 +4,80 @@
         "gif": "gifs/monke1.webp",
         "audio": "audio/ceelo.mp3",
         "start": 0,
-        "text": "Feck you"
+        "text": "Feck you",
+        "title": "Fuck You - CeeLo Green",
+        "link": "https://www.youtube.com/watch?v=pc0mxOXbWIU"
     },
     {
         "ID": 2,
         "gif": "gifs/monke2.webp",
         "audio": "audio/nothin.mp3",
         "start": 0,
-        "text": "Pimp"
+        "text": "Pimp",
+        "title": "Nothin' But a 'G' Thang - Dr. Dre",
+        "link": "https://www.youtube.com/watch?v=8GliyDgAGQI"
     },
     {
         "ID": 3,
         "gif": "gifs/monke3.gif",
         "audio": "audio/ridin.mp3",
         "start": 0,
-        "text": ""
+        "text": "Monke ridin the whip fo today",
+        "title": "Ridin' - Chamillionaire",
+        "link": "https://www.youtube.com/watch?v=CtwJvgPJ9xw"
     },
     {
         "ID": 4,
         "gif": "gifs/monke4.webp",
         "audio": "audio/uhohstink.mp3",
         "start": 0,
-        "text": "Stinky Monke"
+        "text": "Stinky Monke",
+        "title": "Uh Oh Stinky Song - Le Monke",
+        "link": "https://www.youtube.com/watch?v=Ot6mrjyFMaI"
     },
     {
         "ID": 5,
         "gif": "gifs/monke5.gif",
         "audio" : "audio/youanddatmonke.mp3",
         "start": 0,
-        "text": "Monke in Bikini"
+        "text": "Monke in Bikini",
+        "title": "U and Dat - E-40",
+        "link": "https://www.youtube.com/watch?v=m-fL-vdcBWo&t"
     },
     {
         "ID": 6,
         "gif": "gifs/monke6.gif",
         "audio" : "audio/925.mp3",
         "start": 0,
-        "text": "Monke be workin"
+        "text": "Monke be workin",
+        "title": "9 to 5 - Dolly Parton",
+        "link": "https://www.youtube.com/watch?v=UbxUSsFXYo4"
+    },
+    {
+        "ID": 7,
+        "gif": "gifs/monke7.gif",
+        "audio" : "audio/towntalk.mp3",
+        "start": 0,
+        "text": "Monke in da tub fr fr",
+        "title": "Town Talk Remastered - Gerhard Narholz",
+        "link": "https://www.youtube.com/watch?v=5ivyZDygkPA&list=RD5ivyZDygkPA"
+    },
+    {
+        "ID": 8,
+        "gif": "gifs/monke8.gif",
+        "audio" : "audio/pyhoms.mp3",
+        "start": 0,
+        "text": "They love eachother",
+        "title": "Put Your Head On My Shoulder - Paul Anka",
+        "link": "https://www.youtube.com/watch?v=kvazBqAlx58&list=RDpSw8an1u3rc"
+    },
+    {
+        "ID": 9,
+        "gif": "gifs/monke9.gif",
+        "audio" : "audio/badday.mp3",
+        "start": 0,
+        "text": "Monke be sad",
+        "title": "Bad Day - Daniel Powter",
+        "link": "https://www.youtube.com/watch?v=gH476CxJxfg&list=RDgH476CxJxfg"
     }
 ]
