@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const monkeText = document.getElementById("monkeText");
     const videoLink = document.getElementById("videoLink");
     const shareBtn = document.getElementById("shareBtn");
+    const pauseBtn = document.getElementById("pauseBtn");
 
     let monkes = [];
     let monkeBag = [];
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 monkeBag = monkeBag.filter(m => m.ID !== fromURL.ID);
                 pendingMonke = fromURL;
                 overlay.style.display = "flex";
+                overlay.textContent = "You just got monke'd";
             }
         });
 
@@ -86,13 +88,18 @@ document.addEventListener("DOMContentLoaded", () => {
         audio.loop = true;
         audio.load();
 
-        audio.addEventListener("canplay", () => {
-            if (monke.start && audio.duration > monke.start) {
-                audio.currentTime = monke.start;
-            }
-            audio.muted = false;
-            audio.play().catch(() => {});
-        }, { once: true });
+        audio.addEventListener(
+            "canplay",
+            () => {
+                if (monke.start && audio.duration > monke.start) {
+                    audio.currentTime = monke.start;
+                }
+                audio.muted = false;
+                audio.play().catch(() => {});
+                pauseBtn.textContent = "⏸";
+            },
+            { once: true }
+        );
     }
 
     function updateMonkeUI(monke) {
@@ -135,6 +142,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         showMonke(getNextMonke());
     }
+
+    pauseBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); 
+
+        if (audio.paused) {
+            audio.play().catch(() => {});
+            pauseBtn.textContent = "⏸";
+        } else {
+            audio.pause();
+            pauseBtn.textContent = "▶";
+        }
+    });
 
     overlay.addEventListener("click", trigger);
     button.addEventListener("click", trigger);

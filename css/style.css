@@ -119,3 +119,26 @@ header nav img:hover {
   background: #333;
   text-decoration: underline;
 }
+
+.monkeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pauseBtn {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.pauseBtn:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
