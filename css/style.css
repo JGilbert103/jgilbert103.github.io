@@ -65,3 +65,57 @@ header nav img:hover {
   font-size: 36px;
   font-family: 'Cabin', sans-serif; 
 }
+
+.monkeInfo {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  background: rgba(0, 0, 0, 0.65);
+  padding: 10px 14px;
+  border-radius: 8px;
+
+  color: #fff;
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  max-width: 260px;
+}
+
+.monkeText {
+  font-weight: 600;
+}
+
+.videoLink {
+  background: #222;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.videoLink:hover {
+  text-decoration: underline;
+  background: #333;
+}
+
+.shareBtn {
+  background: #222;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.shareBtn:hover {
+  background: #333;
+  text-decoration: underline;
+}

@@ -4,9 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("monkeAudio");
     const button = document.getElementById("randomMonkeLink");
 
+    const monkeText = document.getElementById("monkeText");
+    const videoLink = document.getElementById("videoLink");
+    const shareBtn = document.getElementById("shareBtn");
+
     let monkes = [];
     let monkeBag = [];
     let lastMonke = null;
+
+    let hasInteracted = false;
+    let pendingMonke = null;
 
     fetch("data/monke.json")
         .then(r => r.json())
@@ -18,7 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const fromURL = getMonkeFromURL();
             if (fromURL) {
                 monkeBag = monkeBag.filter(m => m.ID !== fromURL.ID);
-                showMonke(fromURL);
+                pendingMonke = fromURL;
+                overlay.style.display = "flex";
             }
         });
 
@@ -46,9 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function getNextMonke() {
-        if (!monkeBag.length) {
-            refillBag();
-        }
+        if (!monkeBag.length) refillBag();
 
         const monke = monkeBag.shift();
 
@@ -80,29 +86,53 @@ document.addEventListener("DOMContentLoaded", () => {
         audio.loop = true;
         audio.load();
 
-        audio.addEventListener(
-            "canplay",
-            () => {
-                if (monke.start && audio.duration > monke.start) {
-                    audio.currentTime = monke.start;
-                }
-                audio.muted = false;
-                audio.play().catch(() => {});
-            },
-            { once: true }
-        );
+        audio.addEventListener("canplay", () => {
+            if (monke.start && audio.duration > monke.start) {
+                audio.currentTime = monke.start;
+            }
+            audio.muted = false;
+            audio.play().catch(() => {});
+        }, { once: true });
+    }
+
+    function updateMonkeUI(monke) {
+        monkeText.textContent = monke.text;
+
+        videoLink.textContent = `🎵 ${monke.title}`;
+        videoLink.href = monke.link;
+
+        const shareUrl = `${window.location.origin}/?monke=${monke.ID}`;
+
+        shareBtn.onclick = () => {
+            navigator.clipboard.writeText(shareUrl);
+            shareBtn.textContent = "✅ Copied!";
+            setTimeout(() => {
+                shareBtn.textContent = "🔗 Share this monke";
+            }, 1500);
+        };
     }
 
     function showMonke(monke) {
         gif.src = monke.gif;
         gif.style.display = "block";
         overlay.style.display = "none";
+
+        updateMonkeUI(monke);
         playAudio(monke);
         setURL(monke);
     }
 
     function trigger() {
         if (!monkes.length) return;
+
+        hasInteracted = true;
+
+        if (pendingMonke) {
+            showMonke(pendingMonke);
+            pendingMonke = null;
+            return;
+        }
+
         showMonke(getNextMonke());
     }
 
