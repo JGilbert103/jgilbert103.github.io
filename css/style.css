@@ -1,383 +1,52 @@
-/*CSS Reset and General Styles*/
-:root {
-    --content-height: 0px;
-}
-
+/* RESET */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* BODY */
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: #2e2e2e;
-    font-family: 'Cabin', sans-serif;
-    overflow: hidden;
+  font-family: 'Cabin', sans-serif;
+  background: #000;
 }
 
-
-input, label, textarea, button, select {
-    font: 'Cabin';
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    padding-left: .1rem;
-}
-
-a {
-    text-decoration: none;
-}
-
-/*Header Area Styles*/
+/* HEADER */
 header {
-    background-color: #394053;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    height: 100px;
-    z-index: 10;
+  background: #3c4656;   /* dark blue bar */
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
-nav a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* header text */
+header h2 {
+  color: #69c26b;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 22px;
 }
 
-
-form {
-    padding-left: 2rem;
-    padding-top: 1rem;
+/* monke image */
+header nav img {
+  height: 80px;
+  width: auto;
+  object-fit: cover;
 }
 
-header a {
-    text-align: center;
+/* MAIN */
+.monkeStage {
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
 }
 
-nav ul {
-    display: flex;
-    font-family: 'Cabin', sans-serif;
-    text-align: right;
-    list-style-type: none;
-}
-
-nav a {
-    color: #5bb7f5;
-    border-bottom: 4px solid transparent;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-nav a:hover, nav a:active {
-    border-bottom: 4px solid #fff;
-}
-
-h2 {
-    font-family: 'Cabin Sketch', sans-serif;
-    color: #96d499;
-    font-size: 1.5rem;
-    text-align: center; 
-    margin: 0;
-    padding: .5rem;
-}
-
-/*Main Content Area Styles*/
-main {
-    background-color: #bbb09b;
-    width: 100%;
-    margin: auto;
-    flex-grow: 1;
-}
-
-main video {
-    display: flex;
-    justify-content: center;
-}
-
-main ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 1rem;
-    border-bottom: 4px solid #2e2e2e;
-}
-
-main ul h2 {
-    padding: 2rem;
-}
-
-main img {
-    display: block;
-}
-
-h1 {
-    font-size: 3rem;
-    color: #d95763;
-}
-
-main p {
-    text-align: center;
-    padding-bottom: .5rem;
-    margin-right: 2rem;
-    margin-left: 2rem;
-    font-size: x-large;
-}
-
-/*Footer Area Styles*/
-footer {
-    background-color: #2e2e2e;
-    color: white;
-    text-align: center;
-    padding: 1em 0;
-}
-
-.font-sm {
-    font-size: .8rem;
-}
-
-/*Home Page Styles*/
-main li {
-    list-style-type: none;
-    background-repeat: no-repeat;
-    background-size: 1em 1em;
-    padding-left: 1.5em;
-    background-position: 0 .2em;
-}
-
-main a {
-    color: #516cc7;
-}
-
-main a:hover, main a:active {
-    border-bottom: 2px solid #000000;
-}
-
-table tr {
-    display: grid;
-    align-items: left;
-    border: 4px solid black;
-    margin: 1rem;
-}
-
-table img {
-    width: 100%;
-}
-
-table {
-    width: auto;
-}
-
-th, td {
-    border: 1px solid black;
-    padding: .25rem;
-    text-align: center;
-}
-
-/* Classes */
-.centeredHeading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    background-color: #bbb09b;
-}
-
-.blackText {
-    color: #000000;
-}
-
-.spaceOut {
-    margin-left: 3rem;
-}
-
-.paddingBottom {
-    padding-bottom: 1rem;
-}
-
-.centerContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
-}
-
-.horizontalContent {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    gap: 2rem;
-}
-
-.downloadLink {
-    color: #5bb7f5;
-}
-
-.underline {
-    border-bottom: 4px solid #2e2e2e;
-}
-
-.border {
-    border-bottom: 4px solid #2e2e2e;
-    border-left: 4px solid #2e2e2e;
-    border-right: 4px solid #2e2e2e;
-}
-
-.border-side {
-    border-left: 4px solid #2e2e2e;
-    border-right: 4px solid #2e2e2e;
-}
-
-.border-top {
-    padding-top: 1rem;
-    border-top: 4px solid #2e2e2e;
-}
-
-.largerArea {
-    width: 60%;
-    height: 200px;
-    border: 1px solid #2e2e2e;
-    border-radius: 4px;
-}
-
-.formatBoxes {
-    width: 30%;
-    height: 40px;
-}
-
-.textAlignment {
-    flex-grow: 1;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.moveRight {
-    padding-left: 12rem;
-    margin-right: 4rem;
-}
-
-.spaceLeft {
-    margin-left: 2rem;
-}
-
-.spaceRight {
-    margin-right: 4rem;
-}
-
-.backgroundDarker {
-    background-color: #2e2e2e;
-}
-
-.paddingTop {
-    padding-top: 1rem;
-}
-
-.marginTop {
-    margin-top: 1rem;
-}
-
-.borderTopThicc {
-    border-top: 12px solid #2e2e2e;
-}
-
-.positionRight {
-    margin-left: 1rem;
-}
-
-.boxed {
-    border: 2px solid black;
-}
-
-.paddingRight {
-    padding-right: 2rem;
-}
-
-.flexContent {
-    display: flex;
-}
-
+/* normal font for "Click for Monke" */
 .overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.85);
-    color: white;
-    font-size: 2.5rem;
-    cursor: pointer;
-    z-index: 2;
-}
-
-.monkeGif {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: none;
-    z-index: 1;
-    background-color: #2e2e2e;
-}
-
-
-
-
-main.monkeStage {
-    position: relative;
-    flex: 1;
-    width: 100%;
-    background-color: #2e2e2e;
-    overflow: hidden;
-}
-
-
-img
-{
-    height: auto;
-}
-
-@media (max-width: 768px)
-{
-
-    body {
-        overflow: auto;
-    }
-
-    header {
-        flex-direction: column;
-        height: auto;
-        padding: 1rem 0;
-        text-align: center;
-    }
-
-    header h2 {
-        font-size: 1.2rem;
-        padding-bottom: 0.5rem;
-    }
-
-    nav a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    nav img {
-        width: 150px;
-        height: auto;
-    }
-
-    .overlay {
-        font-size: 1.8rem;
-        padding: 1rem;
-        text-align: center;
-        -webkit-tap-highlight-color: transparent;
-    }
+  color: #fff;
+  font-size: 36px;
+  font-family: 'Cabin', sans-serif;  /* <-- normal font */
 }

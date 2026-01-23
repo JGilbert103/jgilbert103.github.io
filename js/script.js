@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const fromURL = getMonkeFromURL();
             if (fromURL) {
-                // Remove URL-loaded monke from bag so it doesn't repeat
                 monkeBag = monkeBag.filter(m => m.ID !== fromURL.ID);
                 showMonke(fromURL);
             }
