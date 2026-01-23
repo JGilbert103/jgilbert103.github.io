@@ -10,16 +10,14 @@
 }
 
 body {
-    line-height: 1.5;
-    background: #2e2e2e;
-    color: #0c3b23;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    margin: 0;
+    background: #2e2e2e;
     font-family: 'Cabin', sans-serif;
+    overflow: hidden;
 }
+
 
 input, label, textarea, button, select {
     font: 'Cabin';
@@ -37,13 +35,19 @@ header {
     background-color: #394053;
     color: #ffffff;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 1rem;
     height: 100px;
-    padding: 0;
-    position: relative;
     z-index: 10;
 }
+
+nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 form {
     padding-left: 2rem;
@@ -64,10 +68,10 @@ nav ul {
 nav a {
     color: #5bb7f5;
     border-bottom: 4px solid transparent;
-    display: grid;
-    margin-left: 3rem;
-    margin-right: 3rem;
     font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 nav a:hover, nav a:active {
@@ -87,7 +91,6 @@ h2 {
 main {
     background-color: #bbb09b;
     width: 100%;
-    max-width: 1800px;
     margin: auto;
     flex-grow: 1;
 }
@@ -315,9 +318,9 @@ th, td {
 .monkeGif {
     position: absolute;
     inset: 0;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     object-position: center;
     display: none;
     z-index: 1;
@@ -330,14 +333,11 @@ th, td {
 main.monkeStage {
     position: relative;
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    max-width: 100%;
+    width: 100%;
     background-color: #2e2e2e;
     overflow: hidden;
 }
+
 
 img
 {
@@ -364,7 +364,9 @@ img
     }
 
     nav a {
-        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     nav img {
