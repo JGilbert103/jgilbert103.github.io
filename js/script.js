@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const videoLink = document.getElementById("videoLink");
     const shareBtn = document.getElementById("shareBtn");
     const pauseBtn = document.getElementById("pauseBtn");
+    const coffeeLink = document.getElementById("coffeeLink");
+
 
     let monkes = [];
     let monkeBag = [];
@@ -131,7 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
     function showOverlay(text) {
         overlay.style.display = "flex";
         overlay.textContent = text;
-        monkeInfo.classList.add("hidden"); // hide info whenever overlay is active
+
+        monkeInfo.classList.add("hidden"); // hide info
+        coffeeLink.classList.add("hidden"); // hide coffee link too
     }
 
     function showMonke(monke) {
@@ -139,7 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
         gif.style.display = "block";
         overlay.style.display = "none";
 
-        monkeInfo.classList.remove("hidden");
+        monkeInfo.classList.remove("hidden"); // show info
+        coffeeLink.classList.remove("hidden"); // show coffee link too
+
         updateMonkeUI(monke);
         playAudio(monke);
         setURL(monke);
