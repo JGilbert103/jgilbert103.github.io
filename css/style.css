@@ -86,6 +86,12 @@ header nav img:hover {
   max-width: 260px;
 }
 
+.monkeInfo.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
 .monkeText {
   font-weight: 600;
 }

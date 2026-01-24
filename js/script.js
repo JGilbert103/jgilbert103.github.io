@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("monkeAudio");
     const button = document.getElementById("randomMonkeLink");
 
+    const monkeInfo = document.getElementById("monkeInfo");
     const monkeText = document.getElementById("monkeText");
     const videoLink = document.getElementById("videoLink");
     const shareBtn = document.getElementById("shareBtn");
@@ -13,10 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let monkeBag = [];
     let lastMonke = null;
 
-    let hasInteracted = false;
     let pendingMonke = null;
     let isPaused = false;
-
 
     fetch("data/monke.json")
         .then(r => r.json())
@@ -29,8 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (fromURL) {
                 monkeBag = monkeBag.filter(m => m.ID !== fromURL.ID);
                 pendingMonke = fromURL;
-                overlay.style.display = "flex";
-                overlay.textContent = "You just got monke'd - Click to see yo monke";
+
+                showOverlay("You just got monke'd - Click to see yo monke");
+            } else {
+                showOverlay("Click for Monke");
             }
         });
 
@@ -110,7 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
-
     function updateMonkeUI(monke) {
         monkeText.textContent = monke.text;
 
@@ -128,11 +128,18 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
+    function showOverlay(text) {
+        overlay.style.display = "flex";
+        overlay.textContent = text;
+        monkeInfo.classList.add("hidden"); // hide info whenever overlay is active
+    }
+
     function showMonke(monke) {
         gif.src = monke.gif;
         gif.style.display = "block";
         overlay.style.display = "none";
 
+        monkeInfo.classList.remove("hidden");
         updateMonkeUI(monke);
         playAudio(monke);
         setURL(monke);
@@ -140,8 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function trigger() {
         if (!monkes.length) return;
-
-        hasInteracted = true;
 
         if (pendingMonke) {
             showMonke(pendingMonke);
@@ -165,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
             pauseBtn.textContent = "▶";
         }
     });
-
 
     overlay.addEventListener("click", trigger);
     button.addEventListener("click", trigger);
