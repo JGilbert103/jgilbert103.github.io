@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 monkeBag = monkeBag.filter(m => m.ID !== fromURL.ID);
                 pendingMonke = fromURL;
                 overlay.style.display = "flex";
-                overlay.textContent = "You just got monke'd";
+                overlay.textContent = "You just got monke'd - Click to see yo monke";
             }
         });
 
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (!isPaused) {
                     audio.play().catch(() => {});
-                    pauseBtn.textContent = "⏸";
+                    pauseBtn.textContent = "||";
                 }
             },
             { once: true }
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (audio.paused) {
             isPaused = false;
             audio.play().catch(() => {});
-            pauseBtn.textContent = "⏸";
+            pauseBtn.textContent = "||";
         } else {
             isPaused = true;
             audio.pause();
