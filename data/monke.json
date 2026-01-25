@@ -79,5 +79,32 @@
         "text": "Monke be sad",
         "title": "Bad Day - Daniel Powter",
         "link": "https://www.youtube.com/watch?v=gH476CxJxfg&list=RDgH476CxJxfg"
+    },
+    {
+        "ID": 10,
+        "gif": "gifs/monke10.gif",
+        "audio" : "audio/goodmorning.mp3",
+        "start": 0,
+        "text": "We be wakin' up da monke",
+        "title": "Peer Gynt Suite No. 1, Morning Mood - Edvard Grieg",
+        "link": "https://www.youtube.com/watch?v=J-1Bob1dU18"
+    },
+    {
+        "ID": 11,
+        "gif": "gifs/monke11.gif",
+        "audio" : "audio/takinabath.mp3",
+        "start": 0,
+        "text": "Monke gettin clean",
+        "title": "Splish Splash - Bobby Darin",
+        "link": "https://www.youtube.com/watch?v=QSA-yHzkvP8&list=RDQSA-yHzkvP8"
+    },
+    {
+        "ID": 12,
+        "gif": "gifs/monke12.gif",
+        "audio" : "audio/vivaldi.mp3",
+        "start": 0,
+        "text": "Monke bein all posh n stuff",
+        "title": "Sping - The Four Seasons - Antonio Vivaldi",
+        "link": "https://www.youtube.com/watch?v=mFWQgxXM_b8&list=RDmFWQgxXM_b8"
     }
 ]
