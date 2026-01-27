@@ -91,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         audio.src = monke.audio;
         audio.loop = true;
         audio.muted = true;
+        audio.volume = 0.75;
         isPaused = false;
 
         audio.load();

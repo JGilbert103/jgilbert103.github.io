@@ -106,5 +106,41 @@
         "text": "Monke bein all posh n stuff",
         "title": "Sping - The Four Seasons - Antonio Vivaldi",
         "link": "https://www.youtube.com/watch?v=mFWQgxXM_b8&list=RDmFWQgxXM_b8"
+    },
+    {
+        "ID": 13,
+        "gif": "gifs/monke13.gif",
+        "audio" : "audio/wtover.mp3",
+        "start": 0,
+        "text": "Monke be sprinting with da dawg",
+        "title": "William Tell Overture - Gioachino Rossini",
+        "link": "https://www.youtube.com/watch?v=c7O91GDWGPU"
+    },
+    {
+        "ID": 14,
+        "gif": "gifs/monke14.gif",
+        "audio" : "audio/dwbh.mp3",
+        "start": 0,
+        "text": "Monke aint worried bout notin",
+        "title": "Don't Worry Be Happy - Bobby McFerrin",
+        "link": "https://www.youtube.com/watch?v=d-diB65scQU"
+    },
+    {
+        "ID": 15,
+        "gif": "gifs/monke15.gif",
+        "audio" : "audio/xylo.mp3",
+        "start": 0,
+        "text": "Monke be playin' da xylophone",
+        "title": "Gone Daddy Gone - Violent Femmes",
+        "link": "https://www.youtube.com/watch?v=oHMJE0rcb8M"
+    },
+    {
+        "ID": 16,
+        "gif": "gifs/monke16.gif",
+        "audio" : "audio/love.mp3",
+        "start": 0,
+        "text": "Bobbin' to the music",
+        "title": "What Is Love - Haddaway",
+        "link": "https://www.youtube.com/watch?v=d-diB65scQU"
     }
 ]
