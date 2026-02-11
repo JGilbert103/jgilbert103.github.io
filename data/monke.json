@@ -142,5 +142,32 @@
         "text": "Bobbin' to the music",
         "title": "What Is Love - Haddaway",
         "link": "https://www.youtube.com/watch?v=d-diB65scQU"
+    },
+    {
+        "ID": 17,
+        "gif": "gifs/monke17.gif",
+        "audio" : "audio/safety.mp3",
+        "start": 0,
+        "text": "Dance monke dance",
+        "title": "Safety Dance - Men Without Hats",
+        "link": "https://www.youtube.com/watch?v=0QDKLglEP5Y"
+    },
+    {
+        "ID": 18,
+        "gif": "gifs/monke18.gif",
+        "audio" : "audio/rightround.mp3",
+        "start": 0,
+        "text": "Right Round - Flo Rida",
+        "title": "Monke be spinnin'",
+        "link": "https://www.youtube.com/watch?v=CcCw1ggftuQ&list=RDCcCw1ggftuQ"
+    },
+    {
+        "ID": 19,
+        "gif": "gifs/monke19.gif",
+        "audio" : "audio/onaboat.mp3",
+        "start": 0,
+        "text": "Monke be drivin' da boat",
+        "title": "I'm On A Boat - The Lonely Island",
+        "link": "https://www.youtube.com/watch?v=Q9rYVd9iXq8&list=RDQ9rYVd9iXq8"
     }
 ]
