@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     function preload(data) {
-        data.forEach(m => {
-            new Image().src = m.gif;
-            new Audio(m.audio);
+        data.slice(0, 3).forEach(m => {
+            const img = new Image();
+            img.src = m.gif;
         });
     }
 
@@ -96,22 +96,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         audio.load();
 
-        audio.addEventListener(
-            "canplay",
-            () => {
-                if (monke.start && audio.duration > monke.start) {
-                    audio.currentTime = monke.start;
-                }
+        const tryPlay = () => {
+            if (monke.start && audio.duration > monke.start) {
+                audio.currentTime = monke.start;
+            }
 
-                audio.muted = false;
+            audio.muted = false;
 
-                if (!isPaused) {
-                    audio.play().catch(() => {});
-                    pauseBtn.textContent = "||";
-                }
-            },
-            { once: true }
-        );
+            if (!isPaused) {
+                audio.play().catch(() => {});
+                pauseBtn.textContent = "||";
+            }
+        };
+
+        audio.addEventListener("loadeddata", tryPlay, { once: true });
+
+        setTimeout(tryPlay, 500);
     }
 
     function updateMonkeUI(monke) {
@@ -135,21 +135,34 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.style.display = "flex";
         overlay.textContent = text;
 
-        monkeInfo.classList.add("hidden"); // hide info
-        coffeeLink.classList.add("hidden"); // hide coffee link too
+        monkeInfo.classList.add("hidden");
+        coffeeLink.classList.add("hidden");
     }
 
     function showMonke(monke) {
-        gif.src = monke.gif;
-        gif.style.display = "block";
+        const loading = document.getElementById("loadingScreen");
+        loading.classList.remove("hidden"); // show loader
+
         overlay.style.display = "none";
 
-        monkeInfo.classList.remove("hidden"); // show info
-        coffeeLink.classList.remove("hidden"); // show coffee link too
+        const img = new Image();
+        img.src = monke.gif;
 
-        updateMonkeUI(monke);
-        playAudio(monke);
-        setURL(monke);
+        img.onload = () => {
+            gif.src = monke.gif;
+            gif.style.display = "block";
+
+            // hide loader
+            loading.classList.add("hidden");
+
+            // show UI
+            monkeInfo.classList.remove("hidden");
+            coffeeLink.classList.remove("hidden");
+
+            updateMonkeUI(monke);
+            playAudio(monke);
+            setURL(monke);
+        };
     }
 
     function trigger() {
