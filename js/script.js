@@ -147,6 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.style.display = "none";
         isLoading = true;
 
+        updateMonkeUI(monke);
+        setURL(monke);
+
         const img = new Image();
         img.src = monke.gif;
 
@@ -156,13 +159,25 @@ document.addEventListener("DOMContentLoaded", () => {
         let loadStartTime = Date.now();
 
         const finishLoading = () => {
+            gif.src = monke.gif;
+            gif.style.display = "block";
+
+            if (monke.start && audio.duration > monke.start) {
+                audio.currentTime = monke.start;
+            }
+
+            audio.muted = false;
+
+            if (!isPaused) {
+                audio.play().catch(() => {});
+                pauseBtn.textContent = "||";
+            }
+
             loading.classList.add("hidden");
 
             monkeInfo.classList.remove("hidden");
             coffeeLink.classList.remove("hidden");
 
-            updateMonkeUI(monke);
-            setURL(monke);
             isLoading = false;
         };
 
@@ -176,8 +191,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         img.onload = () => {
-            gif.src = monke.gif;
-            gif.style.display = "block";
             gifLoaded = true;
             checkBothReady();
         };
@@ -192,17 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
         audio.load();
 
         const tryPlay = () => {
-            if (monke.start && audio.duration > monke.start) {
-                audio.currentTime = monke.start;
-            }
-
-            audio.muted = false;
-
-            if (!isPaused) {
-                audio.play().catch(() => {});
-                pauseBtn.textContent = "||";
-            }
-
             audioReady = true;
             checkBothReady();
         };
