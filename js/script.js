@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         audio.src = monke.audio;
         audio.loop = true;
         audio.muted = true;
-        audio.volume = 0.75;
+        audio.volume = 0.5;
         isPaused = false;
 
         audio.load();
@@ -140,9 +140,16 @@ document.addEventListener("DOMContentLoaded", () => {
         coffeeLink.classList.add("hidden");
     }
 
+    function getRandomThinkingGif() {
+        const thinkingGifs = ["gifs/thinking.gif", "gifs/thinking2.gif", "gifs/thinking3.gif"];
+        return thinkingGifs[Math.floor(Math.random() * thinkingGifs.length)];
+    }
+
     function showMonke(monke) {
         const loading = document.getElementById("loadingScreen");
+        const loadingGif = document.getElementById("loadingGif");
         loading.classList.remove("hidden");
+        loadingGif.src = getRandomThinkingGif();
 
         overlay.style.display = "none";
         isLoading = true;
@@ -155,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let gifLoaded = false;
         let audioReady = false;
-        const minLoadTime = Math.random() * 2000 + 1000;
+        const minLoadTime = Math.random() * 1500 + 500;
         let loadStartTime = Date.now();
 
         const finishLoading = () => {
@@ -199,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
         audio.src = monke.audio;
         audio.loop = true;
         audio.muted = true;
-        audio.volume = 0.75;
+        audio.volume = 0.5;
         isPaused = false;
 
         audio.load();
