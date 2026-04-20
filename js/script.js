@@ -235,4 +235,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     overlay.addEventListener("click", trigger);
     button.addEventListener("click", trigger);
+
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+        link.addEventListener("click", () => {
+            audio.pause();
+        });
+    });
+
+    window.addEventListener("beforeunload", () => {
+        audio.pause();
+    });
 });
