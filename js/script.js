@@ -148,21 +148,63 @@ document.addEventListener("DOMContentLoaded", () => {
         const img = new Image();
         img.src = monke.gif;
 
+        let gifLoaded = false;
+        let audioReady = false;
+
+        const checkBothReady = () => {
+            if (gifLoaded && audioReady) {
+                // hide loader
+                loading.classList.add("hidden");
+
+                // show UI
+                monkeInfo.classList.remove("hidden");
+                coffeeLink.classList.remove("hidden");
+
+                updateMonkeUI(monke);
+                setURL(monke);
+            }
+        };
+
         img.onload = () => {
             gif.src = monke.gif;
             gif.style.display = "block";
-
-            // hide loader
-            loading.classList.add("hidden");
-
-            // show UI
-            monkeInfo.classList.remove("hidden");
-            coffeeLink.classList.remove("hidden");
-
-            updateMonkeUI(monke);
-            playAudio(monke);
-            setURL(monke);
+            gifLoaded = true;
+            checkBothReady();
         };
+
+        // Set up audio and track when it's ready
+        audio.pause();
+        audio.src = monke.audio;
+        audio.loop = true;
+        audio.muted = true;
+        audio.volume = 0.75;
+        isPaused = false;
+
+        audio.load();
+
+        const tryPlay = () => {
+            if (monke.start && audio.duration > monke.start) {
+                audio.currentTime = monke.start;
+            }
+
+            audio.muted = false;
+
+            if (!isPaused) {
+                audio.play().catch(() => {});
+                pauseBtn.textContent = "||";
+            }
+
+            audioReady = true;
+            checkBothReady();
+        };
+
+        audio.addEventListener("loadeddata", tryPlay, { once: true });
+
+        // Fallback timeout to ensure loading screen eventually hides
+        setTimeout(() => {
+            audioReady = true;
+            checkBothReady();
+        }, 2000);
     }
 
     function trigger() {
