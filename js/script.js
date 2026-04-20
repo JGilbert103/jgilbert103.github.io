@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let pendingMonke = null;
     let isPaused = false;
+    let isLoading = false;
 
     fetch("data/monke.json")
         .then(r => r.json())
@@ -141,27 +142,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showMonke(monke) {
         const loading = document.getElementById("loadingScreen");
-        loading.classList.remove("hidden"); // show loader
+        loading.classList.remove("hidden");
 
         overlay.style.display = "none";
+        isLoading = true;
 
         const img = new Image();
         img.src = monke.gif;
 
         let gifLoaded = false;
         let audioReady = false;
+        const minLoadTime = Math.random() * 2000 + 1000;
+        let loadStartTime = Date.now();
+
+        const finishLoading = () => {
+            loading.classList.add("hidden");
+
+            monkeInfo.classList.remove("hidden");
+            coffeeLink.classList.remove("hidden");
+
+            updateMonkeUI(monke);
+            setURL(monke);
+            isLoading = false;
+        };
 
         const checkBothReady = () => {
             if (gifLoaded && audioReady) {
-                // hide loader
-                loading.classList.add("hidden");
+                const elapsedTime = Date.now() - loadStartTime;
+                const remainingTime = Math.max(0, minLoadTime - elapsedTime);
 
-                // show UI
-                monkeInfo.classList.remove("hidden");
-                coffeeLink.classList.remove("hidden");
-
-                updateMonkeUI(monke);
-                setURL(monke);
+                setTimeout(finishLoading, remainingTime);
             }
         };
 
@@ -172,7 +182,6 @@ document.addEventListener("DOMContentLoaded", () => {
             checkBothReady();
         };
 
-        // Set up audio and track when it's ready
         audio.pause();
         audio.src = monke.audio;
         audio.loop = true;
@@ -200,15 +209,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         audio.addEventListener("loadeddata", tryPlay, { once: true });
 
-        // Fallback timeout to ensure loading screen eventually hides
         setTimeout(() => {
             audioReady = true;
             checkBothReady();
         }, 2000);
+
+        setTimeout(() => {
+            isLoading = false;
+        }, 6000);
     }
 
     function trigger() {
-        if (!monkes.length) return;
+        if (!monkes.length || isLoading) return;
 
         if (pendingMonke) {
             showMonke(pendingMonke);
@@ -239,6 +251,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('a[target="_blank"]').forEach(link => {
         link.addEventListener("click", () => {
             audio.pause();
+            pauseBtn.textContent = "▶";
+            isPaused = true;
         });
     });
 
